@@ -29,7 +29,7 @@ Created by: Kevin (https://github.com/kevin-lem0n)
     }
 
     /*
-    Function is run everytime the page is loaded.
+    Function is run every time the page is loaded.
     It checks whether SF Global State Object has been created before.
     It checks the current value of the sfHasInit.
     If it hasn't been created --> create the SF Global State Object & updated sfHasInit to sf-init-completed
@@ -45,6 +45,7 @@ Created by: Kevin (https://github.com/kevin-lem0n)
             // Store the SGO as JSON in localStorage
             $lsSet("snowflakeGlobalStateData", snowflakeGlobalStateJSON);   
             $lsSet("sfHasInit", "sf-init-completed");
+            console.log("Snowflake JS initialised");
         }
     }
     SnowflakeInit();
@@ -81,9 +82,12 @@ Created by: Kevin (https://github.com/kevin-lem0n)
         update: function(stateName, newStateValue){
             var sgoDataAsJSON = Factory.Snowflake.getAll(); // Get the existing state data
             if (sgoDataAsJSON.hasOwnProperty(stateName)) {
-                sgoDataAsJSON[stateName] = newStateValue;
-                var updatedSgoDataAsJSON = $tostring(sgoDataAsJSON);
-                $lsSet("snowflakeGlobalStateData", updatedSgoDataAsJSON);
+                // Only update state if new value is not "" and not null
+                if(newStateValue != "" && newStateValue != null){
+                    sgoDataAsJSON[stateName] = newStateValue;
+                    var updatedSgoDataAsJSON = $tostring(sgoDataAsJSON);
+                    $lsSet("snowflakeGlobalStateData", updatedSgoDataAsJSON);
+                }
             }
         },
 
