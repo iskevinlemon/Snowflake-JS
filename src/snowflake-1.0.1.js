@@ -12,11 +12,14 @@ Created by: Kevin (https://github.com/kevin-lem0n)
     // Utils
 
     // Local storage - get
-    Factory.$lsGet = function(a){
-        return localStorage.getItem(a);
+    // @param {string} lsKey - The name of the key
+    Factory.$lsGet = function(lsKey){
+        return localStorage.getItem(lsKey);
     }
 
     // Local storage - set
+    // @param {string} lsKey - The name of the key
+    // @param {*} lsValue - The new value assigned to the key
     Factory.$lsSet = function(lsKey, lsValue){
         localStorage.setItem(lsKey, lsValue);
     }
