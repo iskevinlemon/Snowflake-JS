@@ -43,3 +43,11 @@ Snowflake.delete("fruit");
 Snowflake.reset(); 
 </script>
 ```
+
+**Snowflake shorthand** <br>
+```html
+<script>
+// Rename Snowflake to something else
+$SnowflakeConfig("sf"); // rename to sf
+</script>
+```
