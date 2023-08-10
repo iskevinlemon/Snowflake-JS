@@ -136,7 +136,9 @@ Created by: Kevin (https://github.com/kevin-lem0n)
     Snowflake.set("fruit", "apple"); -->  Library.set("fruit", "apple");
     */
     Factory.$SnowflakeConfig = function(sfNewName) {
-        Factory[sfNewName] = Factory.Snowflake;
+        if(sfNewName != "" && sfNewName != null){
+            Factory[sfNewName] = Factory.Snowflake;
+        }
     }
 
 })(window); // // function attached to a window object - END
